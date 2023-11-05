@@ -1,27 +1,27 @@
-// import Lottie from "lottie-react";
-// import { useContext } from "react";
+
 import Lottie from "lottie-react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-// import logout from '../../../../public/logout.json';
+import logout from '../../../../public/logout.json';
 import userLogo from '../../../../public/user.json';
-// import { AuthContext } from "../../Providers/AuthProviders";
+import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Navbar = () => {
-    // const { user, logOut } = useContext(AuthContext)
-    // const handleSignOut = () => {
-    //     logOut()
+    const { user, logOut } = useContext(AuthContext)
+    const handleSignOut = () => {
+        logOut()
 
-    // }
+    }
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/'>Add job</Link></li>
+        
+        <li><Link to='/'>Bid Requests</Link></li>
+        {
+            user ? <>
+                <li><Link to='/addJob'>Add job</Link></li>
         <li><Link to='/'>My posted jobs</Link></li>
         <li><Link to='/'>My Bids</Link></li>
-        <li><Link to='/'>Bid Requests</Link></li>
-        {/* {
-            user ? <>
-                <li><Link to='/addProduct'>Add product</Link></li>
-                <li><Link to='/myCart'>My cart</Link></li></> : <></>} */}
+                </> : <></>}
     </>
 
 
@@ -45,14 +45,14 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {/* {user ? <>
+                    {user ? <>
                         <p className=" font-semibold"> {user?.displayName ? <p>{user.displayName}</p> : <></>}</p>
                         <img src={user.photoURL} className="w-10 mx-4 rounded-full" alt="" />
                     </> : <></>}
                     {user ? <Lottie animationData={logout} onClick={handleSignOut} className="w-14"  ></Lottie> :
                         <Link to='/login'><Lottie animationData={userLogo} className="w-14"  ></Lottie></Link>
-                    } */}
-                    <Link to='/login'><Lottie animationData={userLogo} className="w-14"  ></Lottie></Link>
+                    }
+                    
                     
                 </div>
               
