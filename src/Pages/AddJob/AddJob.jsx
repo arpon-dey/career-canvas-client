@@ -20,7 +20,7 @@ const AddJob = () => {
         const minPrice = form.minPrice.value;
         const description = form.description.value;
         const jobCategory = category
-        const email = user.email
+        const email = form.employerEmail.value
         const job = {
             jobTitle,
             date,
@@ -44,7 +44,7 @@ const AddJob = () => {
                 }
             })
 
-        // fetch('https://brand-store-server-rho.vercel.app/products',{
+        // fetch('http://localhost:5000/jobs',{
         //     method:'POST',
         //     headers:{
         //         'Content-Type':'application/json'
