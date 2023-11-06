@@ -37,7 +37,12 @@ const Navbar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-2xl">DigiTalent </Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-2xl">
+                        <div className="flex justify-center items-center">
+                            <img src="https://i.ibb.co/jgsCJCT/Screenshot-2023-11-06-180353-removebg-preview-1.png" className="w-8" alt="" />
+                         <p>igiTalent</p>
+                        </div> 
+                        </Link>
                 </div>
                 <div className="navbar-center  hidden lg:flex">
                     <ul className="menu text-lg font-semibold menu-horizontal px-1">

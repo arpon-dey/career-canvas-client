@@ -14,6 +14,19 @@ const JobDetails = () => {
     const {user} = useContext(AuthContext)
     console.log(JobDetails);
     const { _id, jobCategory, jobTitle, description, date, minPrice, maxPrice, email } = JobDetails
+
+    const handleBidRequest = e =>{
+        e.preventDefault()
+        const form = new FormData(e.currentTarget)
+
+        const name = form.get('name')
+        const email = form.get('email')
+        const password = form.get('password')
+        const photoInput = e.target.querySelector('input[type="file"]');
+        const photoFile = photoInput.files[0];
+        console.log({ name, email, photoFile, password })
+
+    }
     return (
         <div>
             <Navbar></Navbar>
@@ -42,10 +55,10 @@ const JobDetails = () => {
 
             <div className="w-full max-w-[56rem] mx-auto flex-row my-8">
                 <div className="card  w-full  shadow-2xl ">
-                    <form className="card-body">
+                    <form className="card-body" onSubmit={handleBidRequest}>
                         <div className="form-control grid grid-cols-1 md:grid-cols-2 gap-4">
                             
-                            <input type="number" placeholder="Price(Bidding amount)" className="input input-bordered" required />
+                            <input type="number" placeholder="Salary(Bidding amount)" className="input input-bordered" required />
                             <input type="date" placeholder="deadline" defaultValue={date} className="input input-bordered" required />
                         </div>
                         <div className="form-control grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -55,7 +68,11 @@ const JobDetails = () => {
                             
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Bid on the project</button>
+                            {/* <button className="btn btn-primary">Bid on the project</button> */}
+                            {/* <button className={
+                                user.email==email? 'btn btn-disabled' : 'btn btn-primary'}>Bid on the project</button> */}
+                                <input type="submit" className={
+                                user.email==email? 'btn btn-disabled' : 'btn btn-primary'} value='Bid on the project'/>
                         </div>
                     </form>
                 </div>
