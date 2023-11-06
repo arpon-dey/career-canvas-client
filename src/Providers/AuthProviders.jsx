@@ -16,9 +16,8 @@ const AuthProviders = ({children}) => {
 
     }
 
-    const updateUserProfile = (displayName, photoURL) =>{
-
-        return updateProfile(displayName, photoURL)
+    const userUpdate = (userInf) => {
+        return updateProfile(auth.currentUser, userInf)
     }
 
     const googleSignIn = () =>{
@@ -50,7 +49,7 @@ const AuthProviders = ({children}) => {
         user,
         createUser,
         signInUser,
-        updateUserProfile,
+        userUpdate,
         googleSignIn,
         logOut,
         loading

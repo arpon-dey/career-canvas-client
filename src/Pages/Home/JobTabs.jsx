@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import DigitalMkt from './DigitalMkt';
 import GraphicD from './GraphicD';
+import './JobTabs.css';
 import WebDevJobs from './WebDevJobs';
 const JobTabs = () => {
     const [allJobs, setAllJobs] = useState([])
@@ -34,9 +35,12 @@ const JobTabs = () => {
 
 
     return (
-        <div className="w-9/12 mx-auto my-4">
+        <div className="w-9/12 mx-auto my-16">
+            <div className='flex justify-center items-center my-6'>
+            <button className='btn w-72 bg-blue-gray-200 glass font-bold text-xl'>Available jobs</button>
+            </div>
             <Tabs>
-                <TabList>
+                <TabList className="centered-tabs">
                     {uniqueCategories.map((category) => (
                         <Tab
                             key={category}

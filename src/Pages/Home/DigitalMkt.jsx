@@ -1,23 +1,31 @@
 import { Button, Card, CardBody, CardFooter, Typography } from '@material-tailwind/react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const DigitalMkt = ({digitalMkt}) => {
     return (
-        <div>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             {
                 digitalMkt.map(job =>
                     <div key={job._id}>
-                    <Card className="mt-6 w-96 h-96" >
+                    <Card className="mt-6 w-80 h-96" >
                     <CardBody>
-                        <Typography variant="h5" color="blue-gray" className="mb-2">
+                        <Typography variant="h4" color="blue-gray" className="mb-2">
                             {job.jobTitle}
                         </Typography>
+                        <Typography variant="h6" color="blue-gray" className="mb-2">
+                            Deadline: {job.date}
+                        </Typography>
+                        <Typography variant="h6" color="blue-gray" className="mb-2">
+                            Range: {job.minPrice}-{job.maxPrice}
+                        </Typography>
+                        
                         <Typography>
-                            {job.description}
+                            {job.description.slice(0, 90)}
                         </Typography>
                     </CardBody>
                     <CardFooter className="pt-0">
-                        <Button>Read More</Button>
+                    <Link to={`/jobs/${job._id}`}><Button>Bid now</Button></Link>
                     </CardFooter>
                 </Card>
                 </div>)

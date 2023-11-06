@@ -29,7 +29,7 @@ const MyPostedJobs = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 m-24">
                 {
                     myPostedJobs.map(myPostedJob => <JobSingleCard 
                         key={myPostedJob._id}
