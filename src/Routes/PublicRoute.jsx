@@ -10,6 +10,7 @@ import Login from "../Pages/Login/Login";
 import MyBids from "../Pages/MyBids/MyBids";
 import MyPostedJobs from "../Pages/MyPostedJobs/MyPostedJobs";
 import Register from "../Pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -26,11 +27,11 @@ import Register from "../Pages/Register/Register";
         },
         {
             path: '/myPostedJobs',
-            element: <MyPostedJobs></MyPostedJobs>
+            element: <PrivateRoute><MyPostedJobs></MyPostedJobs></PrivateRoute>
         },
         {
             path: '/jobs/:id',
-            element: <JobDetails></JobDetails>,
+            element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
             loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
         },
         {
@@ -50,6 +51,10 @@ import Register from "../Pages/Register/Register";
         {
             path: '/register',
             element: <Register></Register>
+        },
+        {
+            path: "*",
+            element: <div>404 not found</div>
         }
       ]
     },
