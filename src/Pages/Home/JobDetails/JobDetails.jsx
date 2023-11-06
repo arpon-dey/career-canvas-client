@@ -3,8 +3,10 @@ import {
     CardBody,
     Typography
 } from "@material-tailwind/react";
+import axios from "axios";
 import { useContext } from "react";
 import { useLoaderData } from 'react-router-dom';
+import Swal from "sweetalert2";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import Footer from "../../Shared/Footer/Footer";
 import Navbar from "../../Shared/Navbar/Navbar";
@@ -18,13 +20,31 @@ const JobDetails = () => {
     const handleBidRequest = e =>{
         e.preventDefault()
         const form = new FormData(e.currentTarget)
-
-        const name = form.get('name')
+        
+        const title = jobTitle
         const email = form.get('email')
-        const password = form.get('password')
-        const photoInput = e.target.querySelector('input[type="file"]');
-        const photoFile = photoInput.files[0];
-        console.log({ name, email, photoFile, password })
+        const deadline = form.get('date')
+        const bidAmount = form.get('bidAmount')
+        
+        const myBid = { title, email, deadline, bidAmount}
+        console.log(myBid)
+
+
+
+        axios.post('http://localhost:5000/myBids', myBid)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    Swal.fire(
+                        'Good job!',
+                        'Bid added successfully',
+                        'success'
+                    )
+                }
+            })
+
+
+      
 
     }
     return (
@@ -58,13 +78,13 @@ const JobDetails = () => {
                     <form className="card-body" onSubmit={handleBidRequest}>
                         <div className="form-control grid grid-cols-1 md:grid-cols-2 gap-4">
                             
-                            <input type="number" placeholder="Salary(Bidding amount)" className="input input-bordered" required />
-                            <input type="date" placeholder="deadline" defaultValue={date} className="input input-bordered" required />
+                            <input type="number" name="bidAmount" placeholder="Salary(Bidding amount)" className="input input-bordered" required />
+                            <input type="date" name="date" placeholder="deadline" defaultValue={date} className="input input-bordered" required />
                         </div>
                         <div className="form-control grid grid-cols-1 md:grid-cols-2 gap-4">
                             
-                            <input type="email" placeholder="email" value={user.email}  className="input input-bordered" required readOnly />
-                            <input type="email" placeholder="Buyer email" value={email} className="input input-bordered" required readOnly />
+                            <input type="email" placeholder="email" value={user.email}  name="email" className="input input-bordered" required readOnly />
+                            <input type="email" placeholder="Buyer email" value={email}   className="input input-bordered" required readOnly />
                             
                         </div>
                         <div className="form-control mt-6">

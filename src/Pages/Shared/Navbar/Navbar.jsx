@@ -20,7 +20,7 @@ const Navbar = () => {
             user ? <>
                 <li><Link to='/addJob'>Add job</Link></li>
         <li><Link to='/myPostedJobs'>My posted jobs</Link></li>
-        <li><Link to='/'>My Bids</Link></li>
+        <li><Link to='/myBids'>My Bids</Link></li>
                 </> : <></>}
     </>
 
