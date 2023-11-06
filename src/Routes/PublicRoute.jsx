@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import Main from "../Layout/MAin";
 import AddJob from "../Pages/AddJob/AddJob";
+import BidRequest from "../Pages/BidRequest/BidRequest";
 import Home from "../Pages/Home/Home";
 import JobDetails from "../Pages/Home/JobDetails/JobDetails";
 import Login from "../Pages/Login/Login";
@@ -35,6 +36,11 @@ import Register from "../Pages/Register/Register";
         {
             path: '/myBids',
             element: <MyBids></MyBids>
+            
+        },
+        {
+            path: '/bidRequest',
+            element: <BidRequest></BidRequest>
             
         },
         {

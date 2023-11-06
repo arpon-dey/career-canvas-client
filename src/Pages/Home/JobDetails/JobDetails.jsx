@@ -5,16 +5,17 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import { useContext } from "react";
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import Footer from "../../Shared/Footer/Footer";
 import Navbar from "../../Shared/Navbar/Navbar";
 
 const JobDetails = () => {
-    const JobDetails = useLoaderData()
     const {user} = useContext(AuthContext)
+    const JobDetails = useLoaderData()
     console.log(JobDetails);
+    const navigate = useNavigate()
     const { _id, jobCategory, jobTitle, description, date, minPrice, maxPrice, email } = JobDetails
 
     const handleBidRequest = e =>{
@@ -25,8 +26,10 @@ const JobDetails = () => {
         const email = form.get('email')
         const deadline = form.get('date')
         const bidAmount = form.get('bidAmount')
+        const job_id = _id
+        const employerEmail = form.get('buyerEmail')
         
-        const myBid = { title, email, deadline, bidAmount}
+        const myBid = { title, email, deadline, bidAmount, job_id, employerEmail}
         console.log(myBid)
 
 
@@ -41,6 +44,8 @@ const JobDetails = () => {
                         'success'
                     )
                 }
+                navigate('/myBids')
+
             })
 
 
@@ -84,7 +89,7 @@ const JobDetails = () => {
                         <div className="form-control grid grid-cols-1 md:grid-cols-2 gap-4">
                             
                             <input type="email" placeholder="email" value={user.email}  name="email" className="input input-bordered" required readOnly />
-                            <input type="email" placeholder="Buyer email" value={email}   className="input input-bordered" required readOnly />
+                            <input type="email" placeholder="Buyer email" value={email} name="buyerEmail"   className="input input-bordered" required readOnly />
                             
                         </div>
                         <div className="form-control mt-6">
