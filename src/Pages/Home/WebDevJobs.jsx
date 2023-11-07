@@ -14,7 +14,7 @@ const WebDevJobs = ({webDevJobs }) => {
                      <motion.div
                             className="container"
                             whileHover={{ scale: 1.1, rotate: 2 }}
-                            whileTap={{ scale: 0.8, rotate: -45, borderRadius: "100%" }}
+                            
                         >
                     <Card className="mt-6 w-80 h-96  hover:bg-gray-200" >
                     <CardBody>

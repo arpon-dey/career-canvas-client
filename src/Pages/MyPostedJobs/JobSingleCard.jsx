@@ -5,9 +5,10 @@ import {
     Typography
 } from "@material-tailwind/react";
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const JobSingleCard = ({ singleJob }) => {
-    const { jobTitle, date, jobCategory, description } = singleJob
+    const { _id,jobTitle, date, jobCategory, description } = singleJob
     return (
         <div>
 
@@ -48,8 +49,8 @@ const JobSingleCard = ({ singleJob }) => {
                     </a>
                         </div>
                         <div className="flex gap-4">
-                            <button className="btn btn-warning text-white font-semibold">Update</button>
-                            <button className="btn btn-error text-white font-semibold">Delete</button>
+                            <Link to={`/jobs/update/${_id}`}><button className="btn btn-error text-white font-semibold">Update</button></Link>
+                            <button className="btn btn-warning text-white font-semibold">Delete</button>
                         </div>
                     </div>
                 </CardBody>
