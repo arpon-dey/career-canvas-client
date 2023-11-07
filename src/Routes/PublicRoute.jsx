@@ -1,4 +1,5 @@
 import {
+    Link,
     createBrowserRouter
 } from "react-router-dom";
 import Main from "../Layout/MAin";
@@ -60,7 +61,10 @@ import PrivateRoute from "./PrivateRoute";
         },
         {
             path: "*",
-            element: <div>404 not found</div>
+            element: <div className="relative">
+                <img src="https://i.ibb.co/mCT42wz/7741849-3747371.jpg" className="max-w-7xl mx-auto my-32" alt="" />
+                <Link to='/'className="btn absolute top-96 ml-96 mt-8">Go to Home</Link>
+                </div>
         }
       ]
     },
