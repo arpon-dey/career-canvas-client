@@ -29,7 +29,8 @@ const BidRequest = () => {
                             <th>Deadline</th>
                             <th>Price</th>
                             <th>status</th>
-                            <th>accept/reject</th>
+                            <th>accept</th>
+                            <th>reject</th>
 
                         </tr>
                     </thead>

@@ -1,28 +1,45 @@
 import { Option, Select } from '@material-tailwind/react';
 import React from 'react';
+import { TypeAnimation } from 'react-type-animation';
 
 const Banner = () => {
     return (
-        <div className=''>
-            <div className="hero min-h-screen rounded-3xl" style={{ backgroundImage: 'url(https://i.ibb.co/fYy3pCC/flat-lay-workstation-with-copy-space-laptop.jpg)' }}>
+        <div className='my-8'>
+            <div className="hero md:min-h-screen rounded-3xl" style={{ backgroundImage: 'url(https://i.ibb.co/fYy3pCC/flat-lay-workstation-with-copy-space-laptop.jpg)' }}>
                 <div className="hero-overlay rounded-3xl bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="">
-                       <div className=''>
-                       <h1 className=" mx-auto max-w-xl  mb-5 text-5xl font-bold">Find nearby jobs of <span className='text-orange-500'>Graphic Designer</span></h1>
-                        <p className="mx-auto max-w-xl mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                       </div>
+                        <div className='my-8 md:my-0'>
+                            <h1 className=" mx-auto  mb-5 text-3xl md:text-5xl font-bold">Find nearby jobs of <span className='text-orange-500'><TypeAnimation
+                                sequence={[
+                                    // Same substring at the start will only be typed once, initially
+                                    'Graphics designer',
+                                    1000,
+                                    'Web developer',
+                                    1000,
+                                    'Frontend Developer',
+                                    1000,
+                                    'Digital markete',
+                                    1000,
+                                ]}
+                                speed={50}
+                                // style={{ fontSize: '2rm' }}
+                                className='text-5xl'
+                                repeat={Infinity}
+                            /></span></h1>
+                            <p className="mx-auto max-w-xl mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        </div>
 
-                            {/* bg-gradient-to-r from-indigo-200 to-indigo-100  */}
-                        
-                        <div className=' p-5 bg-gradient-to-r  from-blue-gray-400 to-blue-gray-100 rounded-xl'>
+                        {/* bg-gradient-to-r from-indigo-200 to-indigo-100  */}
+
+                        <div className=' p-5 my-8 md:my-0 bg-gradient-to-r  from-blue-gray-400 to-blue-gray-100 rounded-xl'>
 
 
 
-                            <div className=" flex items-center justify-center gap-8  ">
+                            <div className=" lg:flex grid grid-cols-2 items-center justify-center gap-8  ">
 
 
-                                <div className="    gap-2">
+                                <div className="gap-2">
                                     <input
                                         type="text"
                                         placeholder="🔍 Search Job keyword"

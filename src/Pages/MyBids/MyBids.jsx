@@ -9,19 +9,22 @@ const MyBids = () => {
     const [bidData, setBidData] = useState([])
     const url = `http://localhost:5000/myBids?email=${user?.email}`
     useEffect(() => {
-
-        
-        if (user && user.email) {
-            fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    setBidData(data);
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                const updatedBidData = data.map((bid) => {
+                    if (bid.status === "Rejected") {
+                        
+                        return { ...bid, status: "Rejected" };
+                    }
+                    
+                    return bid;
                 });
-        } else {
-            setBidData([]); // Set an empty array if the user is not available
-        }
-    }, [user]);
+    
+                setBidData(updatedBidData);
+            });
+    }, []);
+    
     return (
         <div>
             <Navbar></Navbar>
@@ -35,6 +38,7 @@ const MyBids = () => {
                             <th>Deadline</th>
                             <th>Email</th>
                             <th>Status</th>
+                            <th>Complete</th>
                         </tr>
                     </thead>
                     <tbody className='text-center font-semibold text-base'>
