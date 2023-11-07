@@ -1,14 +1,20 @@
 import { Button, Card, CardBody, CardFooter, Typography } from '@material-tailwind/react';
+import { motion } from "framer-motion";
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const DigitalMkt = ({digitalMkt}) => {
+const DigitalMkt = ({ digitalMkt }) => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             {
                 digitalMkt.map(job =>
                     <div key={job._id}>
-                    <Card className="mt-6 w-80 h-96" >
+                        <motion.div
+                            className="container"
+                            whileHover={{ scale: 1.1, rotate: 2 }}
+                            whileTap={{ scale: 0.8, rotate: -45, borderRadius: "100%" }}
+                        >
+                            <Card className="mt-6 w-80 h-96 hover:bg-gray-200" >
                     <CardBody>
                         <Typography variant="h4" color="blue-gray" className="mb-2">
                             {job.jobTitle}
@@ -28,7 +34,8 @@ const DigitalMkt = ({digitalMkt}) => {
                     <Link to={`/jobs/${job._id}`}><Button>Bid now</Button></Link>
                     </CardFooter>
                 </Card>
-                </div>)
+                        </motion.div>
+                    </div>)
             }
         </div>
     );
