@@ -6,9 +6,28 @@ import {
 } from "@material-tailwind/react";
 import React from 'react';
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const JobSingleCard = ({ singleJob }) => {
+const JobSingleCard = ({ singleJob, onDelete }) => {
     const { _id,jobTitle, date, jobCategory, description } = singleJob
+
+
+    const handleDelete = (_id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    onDelete(_id);
+                }
+            })
+    }
     return (
         <div>
 
@@ -50,7 +69,7 @@ const JobSingleCard = ({ singleJob }) => {
                         </div>
                         <div className="flex gap-4">
                             <Link to={`/jobs/update/${_id}`}><button className="btn btn-error text-white font-semibold">Update</button></Link>
-                            <button className="btn btn-warning text-white font-semibold">Delete</button>
+                            <button  onClick={() => handleDelete(_id)} className="btn btn-warning text-white font-semibold">Delete</button>
                         </div>
                     </div>
                 </CardBody>
