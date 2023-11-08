@@ -9,7 +9,7 @@ import WebDevJobs from './WebDevJobs';
 const JobTabs = () => {
     const [allJobs, setAllJobs] = useState([])
     const [uniqueCategories, setUniqueCategories] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState('Digital marketing');
 
 
     useEffect(() => {

@@ -5,6 +5,7 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import { useContext } from "react";
+import { Helmet } from "react-helmet";
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Providers/AuthProviders";
@@ -52,8 +53,19 @@ const JobDetails = () => {
       
 
     }
+    const generateTitle = () => {
+        switch (location.pathname) {
+            case '/addJob':
+                return 'Digitalenet| Job details';
+            default:
+                return 'Digitalenet';
+        }
+    };
     return (
         <div>
+            <Helmet>
+                <title>{generateTitle()}</title>
+            </Helmet>
             <Navbar></Navbar>
             <Card className="w-full max-w-[56rem] mx-auto flex-row my-8">
 

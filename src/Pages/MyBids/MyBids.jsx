@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { AuthContext } from '../../Providers/AuthProviders';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
@@ -32,9 +33,21 @@ const MyBids = () => {
                 setBidData(updatedBidData);
             });
     }, []);
+    const generateTitle = () => {
+        switch (location.pathname) {
+            case '/addJob':
+                return 'Digitalenet| My Bids';
+            default:
+                return 'Digitalenet';
+        }
+    };
     
     return (
         <div>
+            <Helmet>
+                <title>{generateTitle()}</title>
+            </Helmet>
+            
             <Navbar></Navbar>
 
             <div className="overflow-x-auto md:h-96">

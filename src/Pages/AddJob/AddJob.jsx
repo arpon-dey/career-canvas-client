@@ -1,6 +1,8 @@
 import { Option, Select } from "@material-tailwind/react";
 import axios from "axios";
 import { useContext, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Footer from "../Shared/Footer/Footer";
@@ -10,6 +12,8 @@ import Navbar from "../Shared/Navbar/Navbar";
 const AddJob = () => {
     const { user } = useContext(AuthContext)
     const [category, setCategory] = useState("")
+    const location = useLocation()
+    console.log(location);
 
     const handleAddJob = e => {
         e.preventDefault();
@@ -44,29 +48,23 @@ const AddJob = () => {
                 }
             })
 
-        // fetch('http://localhost:5000/jobs',{
-        //     method:'POST',
-        //     headers:{
-        //         'Content-Type':'application/json'
-        //     },
-        //     body:JSON.stringify(job)
-        // })
-        // .then((res) => res.json())
-        // .then(data =>{
-        //     console.log(data)
-        //     if(data.insertedId){
-        //         Swal.fire(
-        //             'Good job!',
-        //             'Product added successfully',
-        //             'success'
-        //           )
-        //     }
-        // })
+
+        
     }
+    const generateTitle = () => {
+        switch (location.pathname) {
+            case '/addJob':
+                return 'Digitalenet| Add job';
+            default:
+                return 'Digitalenet';
+        }
+    };
     return (
         <div className="">
             <Navbar></Navbar>
-
+            <Helmet>
+                <title>{generateTitle()}</title>
+            </Helmet>
             <div className="md:w-10/12 mx-auto my-8">
 
                 <form onSubmit={handleAddJob}>
@@ -97,7 +95,7 @@ const AddJob = () => {
                                 <input
                                     type="email"
                                     placeholder="Employer email"
-                                    value={user.email}
+                                    value={user?.email}
                                     readOnly
                                     name="employerEmail"
                                     className="input input-bordered bg-white text-black"

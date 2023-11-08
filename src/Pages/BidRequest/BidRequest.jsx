@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { AuthContext } from '../../Providers/AuthProviders';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
@@ -15,9 +16,20 @@ const BidRequest = () => {
             setBidReq(data)
         })
     },[])
+    const generateTitle = () => {
+        switch (location.pathname) {
+            case '/addJob':
+                return 'Digitalenet| Bid request';
+            default:
+                return 'Digitalenet';
+        }
+    };
     const filteredBidReq = bidReq.filter(requestedBid => requestedBid.employerEmail === user?.email);
     return (
         <div>
+            <Helmet>
+                <title>{generateTitle()}</title>
+            </Helmet>
             <Navbar></Navbar>
             <div className="overflow-x-auto md:h-96">
                 <table className="table w-9/12 mx-auto border-2 border-orange-500">

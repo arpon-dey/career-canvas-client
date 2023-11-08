@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../Providers/AuthProviders";
@@ -64,10 +65,21 @@ const Register = () => {
         }
     }
 
+    const generateTitle = () => {
+        switch (location.pathname) {
+            case '/addJob':
+                return 'Digitalenet| Add job';
+            default:
+                return 'Digitalenet';
+        }
+    };
 
 
     return (
         <div>
+            <Helmet>
+                <title>{generateTitle()}</title>
+            </Helmet>
             <Navbar></Navbar>
             <ToastContainer
                 position="bottom-left"

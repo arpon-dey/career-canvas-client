@@ -1,5 +1,6 @@
 import Lottie from 'lottie-react';
 import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -46,8 +47,19 @@ const Login = () => {
 
 
     }
+    const generateTitle = () => {
+        switch (location.pathname) {
+            case '/addJob':
+                return 'Digitalenet| Login';
+            default:
+                return 'Digitalenet';
+        }
+    };
     return (
         <div>
+            <Helmet>
+                <title>{generateTitle()}</title>
+            </Helmet>
             <Navbar></Navbar>
             <ToastContainer
                 position="bottom-left"

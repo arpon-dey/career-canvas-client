@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Footer from "../Shared/Footer/Footer";
@@ -44,11 +45,21 @@ const MyPostedJobs = () => {
                 }
             })
     }
-       
+    const generateTitle = () => {
+        switch (location.pathname) {
+            case '/addJob':
+                return 'Digitalenet| My posted Jobs';
+            default:
+                return 'Digitalenet';
+        }
+    };
 
 
         return (
             <div>
+                <Helmet>
+                <title>{generateTitle()}</title>
+            </Helmet>
                 <Navbar></Navbar>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 m-24">
                 {jobItems.length > 0 ? (
