@@ -16,7 +16,6 @@ const MyBidsTable = ({ singleBidData }) => {
     // }
 
     const handleComplete = () => {
-        setStatus('Complete');
         setShowCompleteButton(false);
     };
     return (
@@ -32,18 +31,14 @@ const MyBidsTable = ({ singleBidData }) => {
                 <button className="btn btn-ghost btn-xs">{email}</button>
             </th>
             <th>
-                <button className="btn btn-ghost btn-xs">{status ? status : 'pending'}</button>
+                {status === 'In progress' ? (
+                    <span className="text-green-500 font-semibold">In progress</span>
+                ) : (
+                    <button className="btn btn-ghost btn-xs">{status ? status : 'pending'}</button>
+                )}
             </th>
-            {/* <th>
-                {status=== 'in progress' ? 
-                    <button className="btn btn-primary btn-xs" >
-                        Complete
-                    </button>
-                        {/* onClick={()=>handleComplete(_id)} */}
-            {/* :<></>
-                }
-        </th> * /} */}
-           <th>
+            
+            <th>
                 {showCompleteButton && (
                     <button className="btn btn-primary btn-xs" onClick={handleComplete}>
                         Complete

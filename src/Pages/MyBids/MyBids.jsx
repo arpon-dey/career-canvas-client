@@ -17,6 +17,14 @@ const MyBids = () => {
                         
                         return { ...bid, status: "Rejected" };
                     }
+                    else if (bid.status === "In progress") {
+                        
+                        return { ...bid, status: "In progress" };
+                    }
+                    else if (bid.status === "completed") {
+                        
+                        return { ...bid, status: "completed" };
+                    }
                     
                     return bid;
                 });

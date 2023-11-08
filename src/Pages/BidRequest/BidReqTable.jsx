@@ -11,7 +11,7 @@ const BidReqTable = ({ requestedBid }) => {
         axios.put(`http://localhost:5000/myBids/reject/${_id}`)
             .then((res) => {
                 console.log(res.data);
-                if (res.data.modifiedCount === 0 ||res.data.matchedCount === 1 ||res.data.modifiedCount === 1) {
+                if (res.data.modifiedCount === 0 || res.data.matchedCount === 1 || res.data.modifiedCount === 1) {
                     setStatus("Rejected");
                     setShowRejectButton(false);
                     setShowAcceptButton(false);
@@ -34,40 +34,41 @@ const BidReqTable = ({ requestedBid }) => {
             });
     }, [_id])
 
+    const handleAccept = (_id) => {
+        axios.put(`http://localhost:5000/myBids/accept/${_id}`)
+            .then((res) => {
+                if (res.data.success || res.data.modifiedCount === 0 || res.data.matchedCount === 1 || res.data.modifiedCount === 1) {
+                    setStatus("In progress");
+                    setShowRejectButton(false);
+                    setShowAcceptButton(false);
+                    alert("The bid has been accepted and is now in progress.");
+                } else {
+                    alert("The bid has already is now in progress.");
+                }
+            })
 
-    // const handleAccept = (_id) => {
-    //     axios.put(`http://localhost:5000/myBids/accept/${_id}`)
-    //         .then((res) => {
-    //             console.log(res.data);
-    //             if (res.data.modifiedCount == 0) {
-    //                 setStatus("In progress");
-    //                 setShowRejectButton(false);
-    //                 setShowAcceptButton(false);
-    //                 alert("The bid has been in progress.");
-    //             }
-    //         });
-    // }
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5000/myBids/complete/${_id}`)
-    //         .then((res) => {
-    //             console.log('completedata', res.data);
-    //             setStatus(res.data.status)
-    //             setShowRejectButton(false);
-    //             setShowAcceptButton(false)
+    };
 
-    //         });
-    // }, [])
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5000/myBids/reject/${_id}`)
-    //         .then((res) => {
-    //             if (res.data.status === 'Rejected') {
-    //                 setStatus("rejected");
-    //                 setShowRejectButton(false);
-    //                 setShowAcceptButton(false);
-    //             }
-    //         });
-    // }, [_id])
+
+    useEffect(() => {
+        // Fetch the bid status from the server initially
+        axios.get(`http://localhost:5000/myBids/reject/${_id}`)
+            .then((res) => {
+                if (res.data.status === 'Rejected') {
+                    setStatus("Rejected");
+                    setShowRejectButton(false);
+                    setShowAcceptButton(false);
+                }
+                // Check if it's in progress
+                else if (res.data.status === 'In progress') {
+                    setStatus("In progress");
+                    setShowRejectButton(false);
+                    setShowAcceptButton(false);
+                }
+            });
+    }, [_id]);
+
 
 
 
@@ -92,7 +93,7 @@ const BidReqTable = ({ requestedBid }) => {
             <th className=' flex gap-4'>
 
                 {showAcceptButton && (
-                    <button className="btn btn-success btn-xs">
+                    <button className="btn btn-success btn-xs" onClick={() => handleAccept(_id)}>
                         Accept
                     </button>
                 )}
@@ -103,7 +104,7 @@ const BidReqTable = ({ requestedBid }) => {
                 )}
 
             </th>
-            
+
 
 
         </tr>
