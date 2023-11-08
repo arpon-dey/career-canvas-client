@@ -34,12 +34,12 @@ import PrivateRoute from "./PrivateRoute";
         {
             path: '/jobs/:id',
             element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-            loader: ({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+            loader: ({params})=>fetch(`https://career-canvas-server-ten.vercel.app/jobs/${params.id}`)
         },
         {
             path: '/jobs/update/:id',
             element:<PrivateRoute> <UpdateJob></UpdateJob></PrivateRoute>,
-            loader: ({params})=>fetch(`http://localhost:5000/jobs/update/${params.id}`)
+            loader: ({params})=>fetch(`https://career-canvas-server-ten.vercel.app/jobs/update/${params.id}`)
         },
         {
             path: '/myBids',

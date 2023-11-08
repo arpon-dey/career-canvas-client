@@ -9,7 +9,7 @@ const BidRequest = () => {
     const [bidReq, setBidReq] = useState([])
     const {user} = useContext(AuthContext)
     useEffect(()=>{
-        fetch('http://localhost:5000/myBids')
+        fetch('https://career-canvas-server-ten.vercel.app/myBids')
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -31,7 +31,7 @@ const BidRequest = () => {
                 <title>{generateTitle()}</title>
             </Helmet>
             <Navbar></Navbar>
-            <div className="overflow-x-auto md:h-96">
+            <div className="overflow-x-auto ">
                 <table className="table w-9/12 mx-auto border-2 border-orange-500">
                     {/* head */}
                     <thead>

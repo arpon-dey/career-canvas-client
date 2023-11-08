@@ -36,7 +36,7 @@ const AddJob = () => {
         };
 
         console.log(job);
-        axios.post('http://localhost:5000/jobs', job)
+        axios.post('https://career-canvas-server-ten.vercel.app/jobs', job)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
@@ -136,7 +136,7 @@ const AddJob = () => {
 
                             <div className="form-control mt-6">
                                 {/* <button className="btn btn-block">Login</button> */}
-                                <input type="submit" className="btn btn-block bg-gradient-to-t from-teal-700 to-teal-400     border-0 hover:bg-blue-gray-300 text-white" value="Add product" />
+                                <input type="submit" className="btn btn-block bg-gradient-to-t from-teal-700 to-teal-400     border-0 hover:bg-blue-gray-300 text-white" value="Add job" />
                             </div>
                         </div>
                     </div>

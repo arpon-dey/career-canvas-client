@@ -51,7 +51,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {user ? <>
-                        <p className=" font-semibold"> {user?.displayName ? <p>{user.displayName}</p> : <></>}</p>
+                        <p className="hidden md:block font-semibold "> {user?.displayName ? <p>{user.displayName}</p> : <></>}</p>
                         <img src={user.photoURL} className="w-10 mx-4 rounded-full" alt="" />
                     </> : <></>}
                     {user ? <Lottie animationData={logout} onClick={handleSignOut} className="w-14"  ></Lottie> :

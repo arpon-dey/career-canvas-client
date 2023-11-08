@@ -35,7 +35,7 @@ const JobDetails = () => {
 
 
 
-        axios.post('http://localhost:5000/myBids', myBid)
+        axios.post('https://career-canvas-server-ten.vercel.app/myBids', myBid)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
@@ -105,9 +105,7 @@ const JobDetails = () => {
                             
                         </div>
                         <div className="form-control mt-6">
-                            {/* <button className="btn btn-primary">Bid on the project</button> */}
-                            {/* <button className={
-                                user.email==email? 'btn btn-disabled' : 'btn btn-primary'}>Bid on the project</button> */}
+                           
                                 <input type="submit" className={
                                 user.email==email? 'btn btn-disabled' : 'btn btn-primary'} value='Bid on the project'/>
                         </div>

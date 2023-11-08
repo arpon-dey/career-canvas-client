@@ -13,7 +13,7 @@ const MyPostedJobs = () => {
     const [jobItems, setJobItems] = useState(myPostedJobs)
     const [isLoading, setIsLoading] = useState(true)
 
-    const url = `http://localhost:5000/jobs?email=${user?.email}`
+    const url = `https://career-canvas-server-ten.vercel.app/jobs?email=${user?.email}`
     useEffect(() => {
         setIsLoading(true);
         axios.get(url)
@@ -30,7 +30,7 @@ const MyPostedJobs = () => {
     const handleDeleteJob = _id => {
         console.log(_id);
 
-        fetch(`http://localhost:5000/jobs/${_id}`, {
+        fetch(`https://career-canvas-server-ten.vercel.app/jobs/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

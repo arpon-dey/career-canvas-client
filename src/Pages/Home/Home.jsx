@@ -16,10 +16,9 @@ const Home = () => {
         switch (location.pathname) {
             case '/':
                 return 'Digitalent | Home';
-            case '/addJob':
-                return 'Digitalent | Add job';
+            
             default:
-                return 'PHero';
+                return 'Digitalent';
         }
     };
    

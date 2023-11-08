@@ -8,8 +8,8 @@ const Footer = () => {
                     <p className="font-bold text-3xl text-white">
                        Digitalent
                     </p>
-                    <p>Providing best quality tech product since 2002</p>
-                    <p>Copyright © 2023 - All right reserved</p>
+                    <p>connecting the job seeker with employer since 2002</p>
+                    <p>Copyright ©arpon 2023 - All right reserved</p>
                 </aside>
                 <nav>
                     <div className="grid grid-flow-col gap-4">

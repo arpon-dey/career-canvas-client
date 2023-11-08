@@ -36,7 +36,7 @@ const Banner = () => {
 
 
 
-                            <div className=" lg:flex grid grid-cols-2 items-center justify-center gap-8  ">
+                            <div className=" lg:flex grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-8  ">
 
 
                                 <div className="gap-2">

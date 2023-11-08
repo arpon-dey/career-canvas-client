@@ -4,19 +4,17 @@ import React, { useEffect, useState } from 'react';
 const MyBidsTable = ({ singleBidData }) => {
     const { email, deadline, title, bidAmount, status, _id } = singleBidData
     const [showCompleteButton, setShowCompleteButton] = useState(false);
-    // const [status, setStatus] = useState(status)
+    const [localStatus, setLocalStatus] = useState(status);
     
     const handleComplete = () => {
-        // Update the status to "Completed" on the frontend
         const updatedStatus = 'Completed';
 
-        // Send a PUT request to update the status on the server
         axios
 
-            .put(`http://localhost:5000/myBids/complete/${_id}`, { status: updatedStatus })
+            .put(`https://career-canvas-server-ten.vercel.app/myBids/complete/${_id}`, { status: updatedStatus })
             .then((res) => {
                 if (res.data.success) {
-                    // Update the local state to 'Completed'
+                    setLocalStatus(updatedStatus);
                     setShowCompleteButton(false);
                     console.log('Status updated to Completed');
                 } else {
@@ -45,15 +43,9 @@ const MyBidsTable = ({ singleBidData }) => {
             <th>
                 <button className="btn btn-ghost btn-xs">{email}</button>
             </th>
-            {/* <th>
-                {status === 'In progress' ? (
-                    <span className="text-green-500 font-semibold">In progress</span>
-                ) : (
-                    <button className="btn btn-ghost btn-xs">{status ? status : 'pending'}</button>
-                )}
-            </th> */}
+           
             <th>
-            <button className="btn btn-ghost btn-xs">{status ? status : 'pending'}</button>
+            <button className="btn btn-ghost btn-xs">{localStatus ? localStatus : 'pending'}</button>
             </th>
             
             <th>

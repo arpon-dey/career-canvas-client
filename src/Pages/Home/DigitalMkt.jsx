@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const DigitalMkt = ({ digitalMkt }) => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 gap-8'>
             {
                 digitalMkt.map(job =>
                     <div key={job._id}>
@@ -14,7 +14,7 @@ const DigitalMkt = ({ digitalMkt }) => {
                             whileHover={{ scale: 1.1, rotate: 2 }}
                             
                         >
-                            <Card className="mt-6 w-80 h-96 hover:bg-gray-200" >
+                            <Card className="mt-6 lg:w-80 h-96 hover:bg-gray-200" >
                     <CardBody>
                         <Typography variant="h4" color="blue-gray" className="mb-2">
                             {job.jobTitle}

@@ -136,9 +136,7 @@ const Login = () => {
                                     className="btn btn-block bg-gradient-to-r from-teal-200 to-teal-600 border-0 text-white"
                                 />
                             </form>
-                            {/* <button className="btn btn-block bg-gradient-to-r from-emerald-400 to-teal-600 border-0 text-white">
-                  Login
-                </button> */}
+                           
                             <div className="flex ">
                                 <div className="mx-4 md:mx-0 btn-group btn-group-vertical lg:btn-group-horizontal ">
                                     <button className="btn w-48 bg-zinc-300 hover:bg-blue-gray-200 border-0 text-black ">
