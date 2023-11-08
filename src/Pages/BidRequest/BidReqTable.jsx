@@ -7,6 +7,8 @@ const BidReqTable = ({ requestedBid }) => {
     const [showAcceptButton, setShowAcceptButton] = useState(true);
     const [showRejectButton, setShowRejectButton] = useState(true);
 
+
+    // reject functionality
     const handleReject = (_id) => {
         axios.put(`http://localhost:5000/myBids/reject/${_id}`)
             .then((res) => {
@@ -23,7 +25,6 @@ const BidReqTable = ({ requestedBid }) => {
     };
 
     useEffect(() => {
-        // Check the status from the server initially
         axios.get(`http://localhost:5000/myBids/reject/${_id}`)
             .then((res) => {
                 if (res.data.status === 'Rejected') {
@@ -33,6 +34,9 @@ const BidReqTable = ({ requestedBid }) => {
                 }
             });
     }, [_id])
+
+
+    // accept functionality
 
     const handleAccept = (_id) => {
         axios.put(`http://localhost:5000/myBids/accept/${_id}`)
@@ -66,6 +70,11 @@ const BidReqTable = ({ requestedBid }) => {
                     setShowRejectButton(false);
                     setShowAcceptButton(false);
                 }
+                else if (res.data.status === 'completed') {
+                    setStatus("completed");
+                    setShowRejectButton(false);
+                    setShowAcceptButton(false);
+                }
             });
     }, [_id]);
 
@@ -88,11 +97,15 @@ const BidReqTable = ({ requestedBid }) => {
             </th>
             <td>{bidAmount}</td>
             <th>
+                
                 <button className="btn btn-ghost btn-xs">{status}</button>
             </th>
             <th className=' flex gap-4'>
-
-                {showAcceptButton && (
+                {
+                    status === 'In progress' ? 
+                    <progress className="progress w-24 ms-7 mt-2"></progress>:
+                    <>
+                    {showAcceptButton && (
                     <button className="btn btn-success btn-xs" onClick={() => handleAccept(_id)}>
                         Accept
                     </button>
@@ -101,7 +114,10 @@ const BidReqTable = ({ requestedBid }) => {
                     <button className="btn btn-error btn-xs" onClick={() => handleReject(_id)}>
                         Reject
                     </button>
-                )}
+                )}</>
+                }
+
+                
 
             </th>
 
