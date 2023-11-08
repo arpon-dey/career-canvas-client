@@ -29,6 +29,12 @@ const MyBids = () => {
                     
                     return bid;
                 });
+                updatedBidData.sort((a, b) => {
+                    const statuses = ["rejected", "completed", "in progress", "pending"];
+                    const statusA = a.status ? a.status.toLowerCase() : "";
+                    const statusB = b.status ? b.status.toLowerCase() : "";
+                    return statuses.indexOf(statusA) - statuses.indexOf(statusB);
+                });
     
                 setBidData(updatedBidData);
             });
