@@ -10,9 +10,11 @@ const JobTabs = () => {
     const [allJobs, setAllJobs] = useState([])
     const [uniqueCategories, setUniqueCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('Digital marketing');
+    const [isLoading, setIsLoading] = useState(true)
 
 
     useEffect(() => {
+        setIsLoading(true);
         fetch('http://localhost:5000/jobs')
             .then(res => res.json())
             .then(data => {
@@ -22,6 +24,7 @@ const JobTabs = () => {
                     new Set(data.map((job) => job.jobCategory))
                 );
                 setUniqueCategories(categories);
+                setIsLoading(false);
             })
 
 
@@ -39,39 +42,37 @@ const JobTabs = () => {
             <div className='flex justify-center items-center my-6'>
             <button className='btn w-72 bg-blue-gray-200 glass font-bold text-xl'>Available jobs</button>
             </div>
-            <Tabs>
-                <TabList className="centered-tabs">
-                    {uniqueCategories.map((category) => (
-                        <Tab
-                            key={category}
-                            onClick={() => setSelectedCategory(category)}
+            {isLoading ? (<span className="loading loading-bars loading-lg ms-96 mt-56"></span>
+            ) : (
+                <Tabs>
+                    <TabList className="centered-tabs">
+                        {uniqueCategories.map((category) => (
+                            <Tab
+                                key={category}
+                                onClick={() => setSelectedCategory(category)}
+                            >
+                                {category}
+                            </Tab>
+                        ))}
+                    </TabList>
 
-                        >
-                            {category}
-                        </Tab>
-                    ))}
-                </TabList>
-              
-               <div>
-               {uniqueCategories.map((category) => (
-                    <TabPanel key={category}>
-                        {selectedCategory === category && (
-                            category === 'Digital marketing' ? (
-                              <DigitalMkt digitalMkt={filteredJobs}></DigitalMkt>
-                                
-                            ) : category === 'Web development' ? (
-                                <WebDevJobs webDevJobs={filteredJobs}></WebDevJobs>
-                            ) : category === 'Graphics Design' ? (
-                                <GraphicD GraphicD={filteredJobs}></GraphicD>
-                            ) : <></>)}
-                        
-                    </TabPanel>
-                ))}
-               </div>
-
-               
-
-            </Tabs>
+                    <div>
+                        {uniqueCategories.map((category) => (
+                            <TabPanel key={category}>
+                                {selectedCategory === category && (
+                                    category === 'Digital marketing' ? (
+                                        <DigitalMkt digitalMkt={filteredJobs}></DigitalMkt>
+                                    ) : category === 'Web development' ? (
+                                        <WebDevJobs webDevJobs={filteredJobs}></WebDevJobs>
+                                    ) : category === 'Graphics Design' ? (
+                                        <GraphicD GraphicD={filteredJobs}></GraphicD>
+                                    ) : <></>
+                                )}
+                            </TabPanel>
+                        ))}
+                    </div>
+                </Tabs>
+            )}
         </div>
     );
 };

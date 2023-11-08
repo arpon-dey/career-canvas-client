@@ -25,7 +25,7 @@ import PrivateRoute from "./PrivateRoute";
         },
         {
             path: '/addJob',
-            element: <AddJob></AddJob>
+            element: <PrivateRoute><AddJob></AddJob></PrivateRoute>
         },
         {
             path: '/myPostedJobs',
@@ -38,17 +38,17 @@ import PrivateRoute from "./PrivateRoute";
         },
         {
             path: '/jobs/update/:id',
-            element: <UpdateJob></UpdateJob>,
+            element:<PrivateRoute> <UpdateJob></UpdateJob></PrivateRoute>,
             loader: ({params})=>fetch(`http://localhost:5000/jobs/update/${params.id}`)
         },
         {
             path: '/myBids',
-            element: <MyBids></MyBids>
+            element: <PrivateRoute><MyBids></MyBids></PrivateRoute>
             
         },
         {
             path: '/bidRequest',
-            element: <BidRequest></BidRequest>
+            element: <PrivateRoute><BidRequest></BidRequest></PrivateRoute>
             
         },
         {
