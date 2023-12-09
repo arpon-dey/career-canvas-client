@@ -19,3 +19,7 @@ A job posting site,
 - Users who place bids can view their bids and change the status based on job owner actions.
 
 5. Create a 404 page with a fun image or GIF and a "Back to Home" button.
+
+
+
+Technology used: Reactjs, Tailwind css, NodeJs, ExpressJs, MongoDB, Firebase, JWT.
