@@ -11,7 +11,7 @@ const BidReqTable = ({ requestedBid }) => {
 
     // reject functionality
     const handleReject = (_id) => {
-        axios.put(`https://career-canvas-server-ten.vercel.app/myBids/reject/${_id}`)
+        axios.put(`http://localhost:5000/myBids/reject/${_id}`)
             .then((res) => {
                 console.log(res.data);
                 if (res.data.modifiedCount === 0 || res.data.matchedCount === 1 || res.data.modifiedCount === 1) {
@@ -30,7 +30,7 @@ const BidReqTable = ({ requestedBid }) => {
     };
 
     useEffect(() => {
-        axios.get(`https://career-canvas-server-ten.vercel.app/myBids/reject/${_id}`)
+        axios.get(`http://localhost:5000/myBids/reject/${_id}`)
             .then((res) => {
                 if (res.data.status === 'Rejected') {
                     setStatus("Rejected");
@@ -44,7 +44,7 @@ const BidReqTable = ({ requestedBid }) => {
     // accept functionality
 
     const handleAccept = (_id) => {
-        axios.put(`https://career-canvas-server-ten.vercel.app/myBids/accept/${_id}`)
+        axios.put(`http://localhost:5000/myBids/accept/${_id}`)
             .then((res) => {
                 if (res.data.success || res.data.modifiedCount === 0 || res.data.matchedCount === 1 || res.data.modifiedCount === 1) {
                     setStatus("In progress");
@@ -65,7 +65,7 @@ const BidReqTable = ({ requestedBid }) => {
 
 
     useEffect(() => {
-        axios.get(`https://career-canvas-server-ten.vercel.app/myBids/reject/${_id}`)
+        axios.get(`http://localhost:5000/myBids/reject/${_id}`)
             .then((res) => {
                 if (res.data.status === 'Rejected') {
                     setStatus("Rejected");

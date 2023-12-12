@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "title": "Digital Marketing Essentials",
+    "description": "Comprehensive course covering  dm, including SEO, social media marketing, and online advertising.",
+    "instructorName": "Emily Johnson",
+    "instructorBio": "Digital marketing expert with a background in online advertising and content strategy.",
+    "duration": "10 weeks",
+    "image": "https://i.ibb.co/zNv7Mxz/10802152-4530890.jpg",
+    "requirements": [
+      "Basic understanding of marketing concepts. ",
+      "Access to a computer with internet connectivity"
+    ],
+    "schedule": [
+      {
+        "week": 1,
+        "topic": "Introduction to Digital Marketing"
+      },
+      {
+        "week": 2,
+        "topic": "Search Engine Optimization (SEO)"
+      }
+    ],
+    "enrollmentDeadline": "2023-08-01",
+    "price": "$199.99"
+  },
+  {
+    "id": 2,
+    "title": "Graphics Design Fundamentals",
+    "description": "Master the basics of graphic design using industry-standard tools like Adobe Photoshop and Illustrator.",
+    "instructorName": "Alex Turner",
+    "instructorBio": "Graphic designer with a passion for creating visually stunning and effective designs.",
+    "duration": "8 weeks",
+    "image": "https://i.ibb.co/BqS3Tgs/3569183.jpg",
+    "requirements": [
+      "Access to a computer with design software (e.g., Adobe Creative Suite). ",
+      "Creativity and an eye for design"
+    ],
+    "schedule": [
+      {
+        "week": 1,
+        "topic": "Introduction to Graphic Design Principles"
+      },
+      {
+        "week": 2,
+        "topic": "Color Theory and Composition"
+      }
+    ],
+    "enrollmentDeadline": "2023-09-15",
+    "price": "$149.99"
+  },
+  {
+    "id": 3,
+    "title": "Web Development Bootcamp",
+    "description": "Intensive web development bootcamp covering HTML, CSS, JavaScript, and popular frameworks like React.",
+    "instructorName": "Chris Roberts",
+    "instructorBio": "Experienced web developer passionate about creating dynamic and responsive websites.",
+    "duration": "12 weeks",
+    "image": "https://i.ibb.co/19h2VLj/18407473-5995345.jpg",
+    "requirements": [
+      "Basic understanding of programming concepts. ",
+      "Access to a computer with internet connectivity"
+    ],
+    "schedule": [
+      {
+        "week": 1,
+        "topic": "Introduction to HTML and CSS"
+      },
+      {
+        "week": 2,
+        "topic": "JavaScript Fundamentals"
+      }
+    ],
+    "enrollmentDeadline": "2023-10-01",
+    "price": "$249.99"
+  }
+]

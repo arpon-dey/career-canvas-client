@@ -35,7 +35,7 @@ const UpdateJob = () => {
         };
         console.log(updatedJob);
 
-        axios.put(`https://career-canvas-server-ten.vercel.app/jobs/update/${_id}`, updatedJob)
+        axios.put(`http://localhost:5000/jobs/update/${_id}`, updatedJob)
         .then(res => {
             console.log(res.data);
             if (res.data.modifiedCount > 0) {
