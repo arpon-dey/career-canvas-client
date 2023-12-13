@@ -36,7 +36,7 @@ const AddJob = () => {
         };
 
         console.log(job);
-        axios.post('http://localhost:5000/jobs', job)
+        axios.post('https://career-canvas-server-ten.vercel.app/jobs', job)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {

@@ -15,7 +15,7 @@ const JobTabs = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch('http://localhost:5000/jobs')
+        fetch('https://career-canvas-server-ten.vercel.app/jobs')
             .then(res => res.json())
             .then(data => {
                 console.log("Data", data)

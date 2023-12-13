@@ -9,7 +9,7 @@ const BidRequest = () => {
     const [bidReq, setBidReq] = useState([])
     const {user} = useContext(AuthContext)
     useEffect(()=>{
-        fetch('http://localhost:5000/myBids')
+        fetch('https://career-canvas-server-ten.vercel.app/myBids')
         .then(res => res.json())
         .then(data => {
             console.log(data);

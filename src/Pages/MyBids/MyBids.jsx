@@ -8,7 +8,7 @@ import MyBidsTable from './MyBidsTable';
 const MyBids = () => {
     const {user} = useContext(AuthContext)
     const [bidData, setBidData] = useState([])
-    const url = `http://localhost:5000/myBids?email=${user?.email}`
+    const url = `https://career-canvas-server-ten.vercel.app/myBids?email=${user?.email}`
     useEffect(() => {
         fetch(url)
             .then((res) => res.json())

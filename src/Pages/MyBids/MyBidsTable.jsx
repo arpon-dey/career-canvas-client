@@ -11,7 +11,7 @@ const MyBidsTable = ({ singleBidData }) => {
 
         axios
 
-            .put(`http://localhost:5000/myBids/complete/${_id}`, { status: updatedStatus })
+            .put(`https://career-canvas-server-ten.vercel.app/myBids/complete/${_id}`, { status: updatedStatus })
             .then((res) => {
                 if (res.data.success) {
                     setLocalStatus(updatedStatus);
