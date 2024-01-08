@@ -3,6 +3,7 @@ import {
     createBrowserRouter
 } from "react-router-dom";
 import Main from "../Layout/MAin";
+import About from "../Pages/About/About";
 import AddJob from "../Pages/AddJob/AddJob";
 import BidRequest from "../Pages/BidRequest/BidRequest";
 import CourseDetails from "../Pages/Courses/CourseDetails";
@@ -24,6 +25,10 @@ import PrivateRoute from "./PrivateRoute";
         {
             path:'/',
             element: <Home></Home>
+        },
+        {
+            path:'/about',
+            element: <About></About>
         },
         {
             path: '/addJob',
